@@ -34,7 +34,6 @@ public class AuthorizationPage {
                 withId(R.id.container_list_news_include_on_fragment_main)
         );
     }
-
     public void waitAuthorizationScreen() {
         WaitUtil.waitDisplayed(withHint("Login"));
     }
@@ -43,5 +42,12 @@ public class AuthorizationPage {
         enterLogin(login);
         enterPassword(password);
         clickSignInButton();
+    }
+    public void checkAuthorizationScreenIsDisplayed() {
+        WaitUtil.waitDisplayed(withHint("Login"));
+    }
+    public void checkLoginFieldIsEmpty() {
+        onView(withHint("Login"))
+                .check(matches(isDisplayed()));
     }
 }
