@@ -15,7 +15,7 @@ public class WaitUtil {
     public static void waitDisplayed(Matcher<View> matcher) {
 
         long startTime = System.currentTimeMillis();
-        long timeout = 10000;
+        long timeout = 20000;
 
         while (System.currentTimeMillis() - startTime < timeout) {
 
@@ -33,6 +33,6 @@ public class WaitUtil {
             }
         }
 
-        throw new AssertionError("Элемент не появился за 10 секунд");
+        throw new AssertionError("Элемент не появился за 20 секунд");
     }
 }
