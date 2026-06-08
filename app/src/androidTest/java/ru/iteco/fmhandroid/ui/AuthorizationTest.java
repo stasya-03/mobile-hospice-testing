@@ -33,4 +33,18 @@ public class AuthorizationTest {
         authorizationPage.clickSignInButton();
         authorizationPage.checkAuthorizationScreenIsDisplayed();
     }
+
+    @Test
+    public void shouldNotLoginWithEmptyPassword() {
+        authorizationPage.waitAuthorizationScreen();
+        authorizationPage.enterLogin("login2");
+        authorizationPage.clickSignInButton();
+        authorizationPage.waitAuthorizationScreen();
+    }
+
+    @Test
+    public void shouldNotLoginWithInvalidLoginAndPassword() {
+        authorizationPage.login("wrongLogin", "wrongPassword");
+        authorizationPage.waitAuthorizationScreen();
+    }
 }
