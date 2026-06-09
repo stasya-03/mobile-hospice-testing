@@ -7,6 +7,8 @@ import androidx.test.filters.LargeTest;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.Before;
+import org.junit.After;
 
 import ru.iteco.fmhandroid.page.AuthorizationPage;
 import ru.iteco.fmhandroid.page.MainPage;
@@ -22,18 +24,21 @@ public class MainPageTest {
     public ActivityScenarioRule<AppActivity> activityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
 
+    @Before
+    public void setUp() {
+        authorizationPage.loginIfNeeded("login2", "password2");
+        mainPage.checkMainPageIsDisplayed();
+    }
+
+
     @Test
     public void shouldOpenMainMenu() {
-        authorizationPage.login("login2", "password2");
-        mainPage.checkMainPageIsDisplayed();
         mainPage.openMainMenu();
         mainPage.checkMainMenuIsDisplayed();
     }
 
     @Test
     public void shouldOpenNewsSectionFromMainMenu() {
-        authorizationPage.login("login2", "password2");
-        mainPage.checkMainPageIsDisplayed();
         mainPage.openMainMenu();
         mainPage.clickNewsInMenu();
         mainPage.checkNewsScreenIsDisplayed();
@@ -41,8 +46,6 @@ public class MainPageTest {
 
     @Test
     public void shouldOpenAboutSectionFromMainMenu() {
-        authorizationPage.login("login2", "password2");
-        mainPage.checkMainPageIsDisplayed();
         mainPage.openMainMenu();
         mainPage.clickAboutInMenu();
         mainPage.checkAboutScreenIsDisplayed();
@@ -50,8 +53,6 @@ public class MainPageTest {
 
     @Test
     public void shouldOpenQuotesSection() {
-        authorizationPage.login("login2", "password2");
-        mainPage.checkMainPageIsDisplayed();
         mainPage.openQuotesSection();
         mainPage.checkQuotesScreenIsDisplayed();
     }
