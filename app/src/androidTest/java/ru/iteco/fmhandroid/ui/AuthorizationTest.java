@@ -8,6 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+
 import ru.iteco.fmhandroid.page.AuthorizationPage;
 import ru.iteco.fmhandroid.page.MainPage;
 
@@ -22,6 +23,7 @@ public class AuthorizationTest {
     @Rule
     public ActivityScenarioRule<AppActivity> activityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
+
 
     @Test
     public void shouldLoginWithValidLoginAndPassword() {
