@@ -50,4 +50,13 @@ public class AuthorizationPage {
         onView(withHint("Login"))
                 .check(matches(isDisplayed()));
     }
+
+    public void loginIfNeeded(String login, String password) {
+        try {
+            enterLogin(login);
+            enterPassword(password);
+            clickSignInButton();
+        } catch (Exception ignored) {
+        }
+    }
 }
