@@ -9,12 +9,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import ru.iteco.fmhandroid.page.AuthorizationPage;
+import ru.iteco.fmhandroid.page.MainPage;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class AuthorizationTest {
 
     AuthorizationPage authorizationPage = new AuthorizationPage();
+    MainPage mainPage = new MainPage();
+
 
     @Rule
     public ActivityScenarioRule<AppActivity> activityScenarioRule =
@@ -45,6 +48,14 @@ public class AuthorizationTest {
     @Test
     public void shouldNotLoginWithInvalidLoginAndPassword() {
         authorizationPage.login("wrongLogin", "wrongPassword");
+        authorizationPage.waitAuthorizationScreen();
+    }
+
+    @Test
+    public void shouldLogout() {
+        authorizationPage.login("login2", "password2");
+        mainPage.checkMainPageIsDisplayed();
+        mainPage.logOut();
         authorizationPage.waitAuthorizationScreen();
     }
 }
