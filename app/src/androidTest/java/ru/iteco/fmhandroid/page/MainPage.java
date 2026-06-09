@@ -18,7 +18,6 @@ public class MainPage {
 
     public void openMainMenu() {
         WaitUtil.waitDisplayed(withId(R.id.main_menu_image_button));
-
         onView(withId(R.id.main_menu_image_button))
                 .perform(click());
     }
@@ -26,10 +25,8 @@ public class MainPage {
     public void checkMainMenuIsDisplayed() {
         onView(withText("Main"))
                 .check(matches(isDisplayed()));
-
         onView(withText("News"))
                 .check(matches(isDisplayed()));
-
         onView(withText("About"))
                 .check(matches(isDisplayed()));
     }
@@ -47,7 +44,6 @@ public class MainPage {
     }
 
     public void checkAboutScreenIsDisplayed() {
-
         WaitUtil.waitDisplayed(withText("Version:"));
     }
 
@@ -57,6 +53,22 @@ public class MainPage {
     }
 
     public  void checkQuotesScreenIsDisplayed() {
+
         WaitUtil.waitDisplayed(withText("Love is all"));
+    }
+
+    public void openAuthorizationMenu() {
+        onView(withId(R.id.authorization_image_button))
+                .perform(click());
+    }
+
+    public void clickLogOut() {
+        onView(withText("Log out"))
+                .perform(click());
+    }
+
+    public void logOut() {
+        openAuthorizationMenu();
+        clickLogOut();
     }
 }
