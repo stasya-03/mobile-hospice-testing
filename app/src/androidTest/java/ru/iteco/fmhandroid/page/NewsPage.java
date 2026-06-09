@@ -74,4 +74,20 @@ public class NewsPage {
         clickSave();
     }
 
+    public void clickCancel() {
+        WaitUtil.waitDisplayed(withId(R.id.cancel_button));
+        onView(withId(R.id.cancel_button))
+                .perform(scrollTo(), click());
+    }
+
+    public void checkControlPanelIsDisplayed() {
+        onView(withText("Control panel"))
+                .check(matches(isDisplayed()));
+    }
+
+    public void confirmCancelNews() {
+        onView(withText("OK"))
+                .perform(click());
+    }
+
 }
