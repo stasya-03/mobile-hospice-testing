@@ -47,6 +47,16 @@ public class MainPage {
     }
 
     public void checkAboutScreenIsDisplayed() {
+
         WaitUtil.waitDisplayed(withText("Version:"));
+    }
+
+    public  void openQuotesSection() {
+        onView(withId(R.id.our_mission_image_button))
+                .perform(click());
+    }
+
+    public  void checkQuotesScreenIsDisplayed() {
+        WaitUtil.waitDisplayed(withText("Love is all"));
     }
 }
