@@ -47,4 +47,12 @@ public class MainPageTest {
         mainPage.clickAboutInMenu();
         mainPage.checkAboutScreenIsDisplayed();
     }
+
+    @Test
+    public void shouldOpenQuotesSection() {
+        authorizationPage.login("login2", "password2");
+        mainPage.checkMainPageIsDisplayed();
+        mainPage.openQuotesSection();
+        mainPage.checkQuotesScreenIsDisplayed();
+    }
 }
