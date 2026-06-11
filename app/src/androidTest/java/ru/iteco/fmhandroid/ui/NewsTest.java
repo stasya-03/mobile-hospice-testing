@@ -68,5 +68,33 @@ public class NewsTest {
         newsPage.checkControlPanelIsDisplayed();
     }
 
+    @Test
+    public void shouldDeleteNews() {
+        String title = "Delete News " + System.currentTimeMillis();
+        String description = "News for delete";
+
+        mainPage.openMainMenu();
+        mainPage.clickNewsInMenu();
+
+        newsPage.createNews(title, description);
+        newsPage.checkNewsIsDisplayed(title);
+
+        newsPage.deleteNews();
+    }
+
+    @Test
+    public void shouldEditNews() {
+        String title = "News to change " + System.currentTimeMillis();
+        String editedTitle = "Smth new " + System.currentTimeMillis();
+        String description = "Nothing special";
+
+        mainPage.openMainMenu();
+        mainPage.clickNewsInMenu();
+        newsPage.createNews(title, description);
+        newsPage.checkNewsIsDisplayed(title);
+        newsPage.editNewsTitle(editedTitle);
+        newsPage.checkNewsIsDisplayed(editedTitle);
+    }
+
 
 }
