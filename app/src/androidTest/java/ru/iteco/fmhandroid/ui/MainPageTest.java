@@ -30,7 +30,6 @@ public class MainPageTest {
         mainPage.checkMainPageIsDisplayed();
     }
 
-
     @Test
     public void shouldOpenMainMenu() {
         mainPage.openMainMenu();
