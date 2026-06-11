@@ -10,6 +10,12 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
+import android.view.View;
+import androidx.test.espresso.UiController;
+import androidx.test.espresso.ViewAction;
+import org.hamcrest.Matcher;
+
+import static org.hamcrest.Matchers.allOf;
 
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.utils.WaitUtil;
@@ -90,4 +96,57 @@ public class NewsPage {
                 .perform(click());
     }
 
+    public void clickDeleteNewsButton() {
+        WaitUtil.waitDisplayed(withId(R.id.news_list_recycler_view));
+        onView(withId(R.id.news_list_recycler_view))
+                .perform(actionOnItemAtPosition(
+                        0,
+                        clickChildViewWithId(R.id.delete_news_item_image_view)
+                ));
+    }
+
+    public void confirmDeleteNews() {
+        onView(withText("OK"))
+                .perform(click());
+    }
+
+    public void deleteNews() {
+        clickDeleteNewsButton();
+        confirmDeleteNews();
+    }
+
+    public static ViewAction clickChildViewWithId(final int id) {
+        return new ViewAction() {
+            @Override
+            public Matcher<View> getConstraints() {
+                return null;
+            }
+
+            @Override
+            public String getDescription() {
+                return "Click on a child view with specified id.";
+            }
+
+            @Override
+            public void perform(UiController uiController, View view) {
+                View childView = view.findViewById(id);
+                childView.performClick();
+            }
+        };
+    }
+
+    public void clickEditNewsButton() {
+        WaitUtil.waitDisplayed(withId(R.id.news_list_recycler_view));
+        onView(withId(R.id.news_list_recycler_view))
+                .perform(actionOnItemAtPosition(
+                        0,
+                        clickChildViewWithId(R.id.edit_news_item_image_view)
+                ));
+    }
+
+    public void editNewsTitle(String newTitle) {
+        clickEditNewsButton();
+        enterTitle(newTitle);
+        clickSave();
+    }
 }
