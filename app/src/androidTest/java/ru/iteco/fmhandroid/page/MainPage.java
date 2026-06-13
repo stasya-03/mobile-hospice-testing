@@ -6,6 +6,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.utils.WaitUtil;
@@ -70,5 +71,12 @@ public class MainPage {
     public void logOut() {
         openAuthorizationMenu();
         clickLogOut();
+        // WaitUtil.waitDisplayed(withHint("Login"));
+    }
+
+    public void clickAllNews() {
+        WaitUtil.waitDisplayed(withId(R.id.all_news_text_view));
+        onView(withId(R.id.all_news_text_view))
+                .perform(click());
     }
 }
