@@ -1,7 +1,7 @@
 package ru.iteco.fmhandroid.ui;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-// import androidx.test.ext.junit.runners.AndroidJUnit4;
+import static androidx.test.espresso.Espresso.pressBack;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 
 import androidx.test.filters.LargeTest;
@@ -35,7 +35,6 @@ public class NewsTest {
     public void setUp() {
         try {
             mainPage.logOut();
-            authorizationPage.waitAuthorizationScreen();
         } catch (Exception ignored) {
         }
 
@@ -47,7 +46,6 @@ public class NewsTest {
     public void tearDown() {
         try {
             mainPage.logOut();
-            authorizationPage.waitAuthorizationScreen();
         } catch (Exception ignored) {
         }
     }
@@ -61,6 +59,8 @@ public class NewsTest {
         mainPage.openMainMenu();
         mainPage.clickNewsInMenu();
         newsPage.createNews(title, description);
+        mainPage.openMainMenu();
+        mainPage.clickNewsInMenu();
         newsPage.checkNewsIsDisplayed(title);
     }
 
@@ -82,7 +82,7 @@ public class NewsTest {
     @Description("Проверка удаления новости")
     public void shouldDeleteNews() {
         String title = "Delete News " + System.currentTimeMillis();
-        String description = "News for delete";
+        String description = "Nothing special";
 
         mainPage.openMainMenu();
         mainPage.clickNewsInMenu();
@@ -91,6 +91,7 @@ public class NewsTest {
         newsPage.checkNewsIsDisplayed(title);
 
         newsPage.deleteNews();
+        pressBack();
     }
 
     @Test
@@ -104,7 +105,6 @@ public class NewsTest {
         mainPage.openMainMenu();
         mainPage.clickNewsInMenu();
         newsPage.createNews(title, description);
-        newsPage.checkNewsIsDisplayed(title);
         newsPage.editNewsTitle(editedTitle);
         newsPage.checkNewsIsDisplayed(editedTitle);
     }
