@@ -87,8 +87,7 @@ public class NewsPage {
     }
 
     public void checkControlPanelIsDisplayed() {
-        onView(withText("Control panel"))
-                .check(matches(isDisplayed()));
+        WaitUtil.waitDisplayed(withId(R.id.add_news_image_view));
     }
 
     public void confirmCancelNews() {
