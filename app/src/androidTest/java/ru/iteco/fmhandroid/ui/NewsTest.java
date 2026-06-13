@@ -1,7 +1,9 @@
 package ru.iteco.fmhandroid.ui;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
+// import androidx.test.ext.junit.runners.AndroidJUnit4;
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+
 import androidx.test.filters.LargeTest;
 
 import org.junit.Rule;
@@ -14,8 +16,11 @@ import ru.iteco.fmhandroid.page.AuthorizationPage;
 import ru.iteco.fmhandroid.page.MainPage;
 import ru.iteco.fmhandroid.page.NewsPage;
 
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
+
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class NewsTest {
 
     AuthorizationPage authorizationPage = new AuthorizationPage();
@@ -48,6 +53,8 @@ public class NewsTest {
     }
 
     @Test
+    @DisplayName("Создание новости")
+    @Description("Проверка создания новости с валидными данными")
     public void shouldCreateNews() {
         String title = "Back massage " + System.currentTimeMillis();
         String description = "Nothing special";
@@ -58,6 +65,8 @@ public class NewsTest {
     }
 
     @Test
+    @DisplayName("Отмена создания новости")
+    @Description("Проверка отмены создания новости")
     public void shouldCancelNewsCreation() {
         mainPage.openMainMenu();
         mainPage.clickNewsInMenu();
@@ -69,6 +78,8 @@ public class NewsTest {
     }
 
     @Test
+    @DisplayName("Удаление новости")
+    @Description("Проверка удаления новости")
     public void shouldDeleteNews() {
         String title = "Delete News " + System.currentTimeMillis();
         String description = "News for delete";
@@ -83,6 +94,8 @@ public class NewsTest {
     }
 
     @Test
+    @DisplayName("Редактирование новости")
+    @Description("Проверка редактирования существующей новости")
     public void shouldEditNews() {
         String title = "News to change " + System.currentTimeMillis();
         String editedTitle = "Smth new " + System.currentTimeMillis();
@@ -95,6 +108,4 @@ public class NewsTest {
         newsPage.editNewsTitle(editedTitle);
         newsPage.checkNewsIsDisplayed(editedTitle);
     }
-
-
 }
