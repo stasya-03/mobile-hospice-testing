@@ -91,3 +91,67 @@
 Имена должны давать понять, какова цель сущности, поэтому лучше избегать использования в именах бессмысленных слов (Manager, Wrapper).
 
 При использовании аббревиатуры как части имени объявления используйте заглавную букву, если она состоит из двух букв (IOStream); используйте только первую букву, если она длиннее (XmlFormatter, HttpInputStream).
+
+
+## Запуск авттотестов
+
+Автотесты расположены в директории:
+
+```text
+app/src/androidTest/java/ru/iteco/fmhandroid/tests
+```
+
+Для запуска автотестов необходимо:
+
+1. Открыть проект в Android Studio.
+2. Запустить эмулятор Android.
+3. Выполнить синхронизацию Gradle.
+4. Запустить тестовые классы:
+
+  * `AuthorizationTest`
+  * `MainPageTest`
+  * `NewsTest`
+
+Тесты можно запускать отдельно по классам через Android Studio.
+
+## Формирование Allure-отчёта
+
+Для формирования отчёта используется Allure Framework.
+
+После выполнения автотестов результаты сохраняются в папку:
+
+```text
+allure-results
+```
+
+Для генерации HTML-отчёта выполнить команду:
+
+```powershell
+& "$env:USERPROFILE\scoop\apps\allure\current\bin\allure.bat" generate allure-results --clean -o allure-report
+```
+
+Для открытия отчёта выполнить команду:
+
+```powershell
+& "$env:USERPROFILE\scoop\apps\allure\current\bin\allure.bat" open allure-report
+```
+
+Готовый отчёт расположен в папке:
+
+```text
+allure-report
+```
+
+## Расположение тестовых классов
+
+Тестовые классы расположены в пакете:
+
+```text
+ru.iteco.fmhandroid.tests
+```
+
+Page Object классы расположены в пакете:
+
+```text
+ru.iteco.fmhandroid.page
+```

@@ -1,4 +1,4 @@
-package ru.iteco.fmhandroid.ui;
+package ru.iteco.fmhandroid.tests;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import static androidx.test.espresso.Espresso.pressBack;
@@ -18,6 +18,7 @@ import ru.iteco.fmhandroid.page.NewsPage;
 
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.ui.AppActivity;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
