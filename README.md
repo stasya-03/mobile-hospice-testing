@@ -106,17 +106,17 @@ allure open allure-report
 
 ## 📸 Скриншоты
 
-<p align="center">
-  <img src="./screenshots/allure-report.png" width="900">
-</p>
-
 ### Главное окно приложения
 
-*(сюда добавим screenshot приложения)*
+<p align="center">
+  <img src="./screenshots/main-screen.png" width="300">
+</p>
 
 ### Отчёт Allure
 
-*(сюда добавим screenshot отчёта)*
+<p align="center">
+  <img src="./screenshots/allure-report.png" width="900">
+</p>
 
 ---
 
